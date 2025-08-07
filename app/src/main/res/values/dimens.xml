@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="itemTitleHorizontalMargin">@dimen/_10sdp</dimen>
+    <dimen name="itemTitleBottomMargin">@dimen/_15sdp</dimen>
+    <dimen name="itemCardHeight">@dimen/_200sdp</dimen>
+    <dimen name="itemCardCornerRadius">@dimen/_20sdp</dimen>
+    <dimen name="smallItemCardCornerRadius">@dimen/_10sdp</dimen>
+    <dimen name="primaryCardCornerRadius">@dimen/_8sdp</dimen>
+    <dimen name="itemAlbumImageHeight">@dimen/_180sdp</dimen>
+    <dimen name="addImageTextSize">@dimen/_11ssp</dimen>
+    <dimen name="chooseImageHeight">@dimen/_180sdp</dimen>
+    <dimen name="chooseImageTextSize">@dimen/_11sdp</dimen>
+</resources>

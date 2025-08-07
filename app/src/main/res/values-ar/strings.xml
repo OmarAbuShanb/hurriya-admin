@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">حرية - أدمن</string>
+
+    <string name="prisoner_books">كتب الأسرى</string>
+    <string name="prisoner_cards">بطاقات الأسرى</string>
+    <string name="prisoner_posters">تصاميم عن الأسرى</string>
+    <string name="home">الرئيسية</string>
+    <string name="details">التفاصيل</string>
+    <string name="prisoner_statistics">إحصائيات الأسرى</string>
+    <string name="martyrs_of_the_captive_movement">شهداء الحركة الأسيرة</string>
+    <string name="send">إرسال</string>
+    <string name="today_s_news">أخبار اليوم</string>
+    <string name="whatsapp_tweets">برقيات واتساب</string>
+    <string name="add_new_tweet">إضافة برقية جديدة</string>
+    <string name="videos">الفيديوهات</string>
+    <string name="albums">ألبوم الصور</string>
+
+    <string name="login">تسجيل الدخول</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+
+    <string name="add_news">إضافة خبر جديد</string>
+    <string name="title">العنوان</string>
+    <string name="description">الوصف</string>
+    <string name="hint_name">الاسم</string>
+    <string name="hint_judgment">الحكم</string>
+    <string name="hint_living">مكان السكن</string>
+    <string name="add_new_prisoner">إضافة أسير جديد</string>
+    <string name="hint_date_of_arrest">تاريخ الإعتقال</string>
+    <string name="add_book">إضافة كتاب</string>
+    <string name="book_author">الكاتب</string>
+    <string name="book_name">اسم الكتاب</string>
+
+    <string name="app_poster">إضافة بوستر</string>
+
+    <string name="send_notification_to_users">إرسال إشعار للمستخدمين</string>
+
+    <string name="add_admin">إضافة مشرف</string>
+    <string name="add_new_admin">إضافة مشرف جديد</string>
+
+    <string name="enter_urgent_news">إضافة خبر عاجل</string>
+
+
+    <string name="update">تعديل</string>
+
+    <string name="choose_pdf_file">اختيار ملف Pdf</string>
+    <string name="_1_file_chooses">تم اتخيار ملف</string>
+    <string name="add">إضافة</string>
+
+    <string name="add_album">إضافة ألبوم</string>
+    <string name="update_album">تعديل الالبوم</string>
+    <string name="upload_album_image">إضافة صورة الألبوم</string>
+
+    <string name="update_the_prisoner_card">تعديل بطاقة الاسير</string>
+    <string name="add_prisoner_card">إضافة بطاقة أسير</string>
+    <string name="add_prisoner_image">اضافة صورة الاسبر</string>
+
+    <string name="add_book_image">إضافة صورة الكتاب</string>
+
+    <string name="add_news_image">إضافة صورة الخبر</string>
+
+    <string name="urgent_news_updated">تم تحديث الخبر العاجل</string>
+    <string name="join_url_updated">تم تحديث رابط الانضمام</string>
+
+    <string name="something_went_wrong">حصل خطأ ما :(</string>
+
+    <string name="add_album_image">إضافة صور للألبوم</string>
+    <string name="add_images_from_gallery">إضافة صور من المعرض</string>
+    <string name="there_is_nothing_to_save">لا يوجد شيء لحفظه</string>
+
+    <string name="update_url_whatsapp_group">تعديل رابط الانضمام الى مجموعة الواتساب</string>
+    <string name="enter_the_new_url">ادخل الرابط الجديد</string>
+
+    <string name="update_the_book">تعديل الكتاب</string>
+
+    <string name="task_completed_successfully">تمت العملية بنجاح</string>
+
+    <string name="update_the_news">تعديل الخبر</string>
+
+    <string name="add_statistic">إضافة احصائية</string>
+    <string name="upload_statistic_image">تحميل صورة للاحصائية</string>
+    <string name="statistic_title">عنوان الاحصائية</string>
+    <string name="statistic_number">رقم الاحصائية</string>
+    <string name="update_the_statistic">تعديل الاحصائية</string>
+
+    <string name="add_video">اضافة فيديو</string>
+    <string name="update_the_video_data">تعديل بيانات الفيديو</string>
+    <string name="add_a_thumbnail">اضافة صورة مصغرة</string>
+    <string name="choose_the_video">اختيار الفيديو</string>
+
+    <string name="enter_tweet_text">ادخل نص البرقية</string>
+
+    <string name="add_poster_image">الرجاء ادخال رقم صحيح</string>
+    <string name="video_uploading_in_background">جار رفع الفيديو في الخلفية</string>
+    <string name="uploaded_successfully">تم الرفع بنجاح</string>
+    <string name="uploading">جار رفع</string>
+    <string name="video">من الفيديوهات</string>
+    <string name="add_argent_news">إضافة خبر عاجل</string>
+    <string name="staff_management">إدارة الطاقم</string>
+
+
+</resources>

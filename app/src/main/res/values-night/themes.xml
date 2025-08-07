@@ -1,0 +1,33 @@
+<resources>
+
+    <style name="Base.Theme.HurriyaAdmin" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/app_color</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:navigationBarColor">@color/app_color</item>
+        <item name="materialCardViewStyle">@style/BaseCardStyle</item>
+        <item name="circularProgressIndicatorStyle">@style/BaseCircularProgressStyle</item>
+        <item name="floatingActionButtonStyle">@style/BaseFloatActionButtonStyle</item>
+        <item name="android:fontFamily">@font/cairo_medium</item>
+        <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
+        <item name="fontFamily">@font/cairo_medium</item>
+        <item name="android:textViewStyle">@style/BaseTextViewStyle</item>
+        <!--  disable hint  -->
+        <item name="android:textColorHint">@color/gray</item>
+    </style>
+
+    <!--////////////////////////////////////// TextView ////////////////////////////////////////-->
+
+    <style name="BaseTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!--//////////////////////////////////////// Card ////////////////////////////////////////-->
+
+    <style name="BaseCardStyle" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardElevation">@dimen/_1sdp</item>
+    </style>
+
+</resources>

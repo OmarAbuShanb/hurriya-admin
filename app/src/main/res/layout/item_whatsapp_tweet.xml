@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_6sdp"
+    app:contentPadding="@dimen/_8sdp">
+
+    <TextView
+        android:id="@+id/whatsAppTweet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_14ssp"
+        android:justificationMode="inter_word"
+        tools:targetApi="o"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="مرحبا اخي الفاضل لقد قرأت طلبك وانا على اتم الاستعداد لتنفيذه في اقرب وقت ،لدي خامة صوتية مميزة واستديو وميكروفون احترافي وسوف أسعد بخدمتك" />
+
+</com.google.android.material.card.MaterialCardView>
+

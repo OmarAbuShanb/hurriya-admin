@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.dashboard.DashboardFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_newsFragment"
+            app:destination="@id/newsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_prisonersStatisticsFragment"
+            app:destination="@id/prisonersStatisticsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_prisonersBooksActivity"
+            app:destination="@id/prisonersBooksActivity"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_prisonersPostersFragment"
+            app:destination="@id/prisonersPostersFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_videosFragment"
+            app:destination="@id/videosFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_to_whatsAppTweetsFragment"
+            app:destination="@id/whatsAppTweetsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_prisonersCardsFragment"
+            app:destination="@id/prisonersCardsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_to_sendNotificationFragment"
+            app:destination="@id/sendNotificationFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_albumsFragment"
+            app:destination="@id/albumsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_loadingDialog"
+            app:destination="@id/loadingDialog"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_staffManagementFragment"
+            app:destination="@id/staffManagementFragment" />
+        <action
+            android:id="@+id/action_to_inviteManagementFragment"
+            app:destination="@id/inviteManagementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.news.NewsFragment"
+        android:label="@string/today_s_news"
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_addNewsFragment"
+            app:destination="@id/addNewsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewsFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.news.AddNewsFragment"
+        android:label="@string/add_news"
+        tools:layout="@layout/fragment_add_news">
+        <argument
+            android:name="model"
+            app:argType="dev.anonymous.hurriya.admin.domain.models.News"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/prisonersStatisticsFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.statistics.PrisonersStatisticsFragment"
+        android:label="@string/prisoner_statistics"
+        tools:layout="@layout/fragment_prisoners_statistics">
+        <action
+            android:id="@+id/action_prisonersStatisticsFragment_to_addPrisonersStatisticFragment"
+            app:destination="@id/addPrisonersStatisticFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPrisonersStatisticFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.statistics.AddPrisonersStatisticFragment"
+        android:label="@string/add_statistic"
+        tools:layout="@layout/fragment_add_prisoners_statistic">
+        <argument
+            android:name="model"
+            app:argType="dev.anonymous.hurriya.admin.domain.models.Statistic"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/prisonersBooksActivity"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.book.PrisonersBooksFragment"
+        android:label="@string/prisoner_books"
+        tools:layout="@layout/fragment_prisoners_books">
+        <action
+            android:id="@+id/action_prisonersBooksActivity_to_addPrisonerBookFragment"
+            app:destination="@id/addPrisonerBookFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPrisonerBookFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.book.AddPrisonerBookFragment"
+        android:label="@string/add_book"
+        tools:layout="@layout/fragment_add_prisoner_book">
+        <argument
+            android:name="model"
+            app:argType="dev.anonymous.hurriya.admin.domain.models.Book"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/prisonersPostersFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.posters.PrisonersPostersFragment"
+        android:label="@string/prisoner_posters"
+        tools:layout="@layout/fragment_prisoners_posters">
+        <action
+            android:id="@+id/action_prisonersPostersFragment_to_addPrisonerPosterFragment"
+            app:destination="@id/addPrisonerPosterFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPrisonerPosterFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.posters.AddPrisonerPosterFragment"
+        android:label="@string/app_poster"
+        tools:layout="@layout/fragment_add_prisoner_poster" />
+    <fragment
+        android:id="@+id/albumImagesFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.album_images.AlbumImagesFragment"
+        android:label="@string/albums"
+        tools:layout="@layout/fragment_album_images">
+        <action
+            android:id="@+id/action_albumImagesFragment_to_addAlbumFragment"
+            app:destination="@id/addAlbumFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <argument
+            android:name="albumId"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAlbumFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.album.AddAlbumFragment"
+        android:label="@string/add_album"
+        tools:layout="@layout/fragment_add_album">
+        <argument
+            android:name="model"
+            app:argType="dev.anonymous.hurriya.admin.domain.models.Album"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/videosFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.videos.VideosFragment"
+        android:label="@string/videos"
+        tools:layout="@layout/fragment_videos">
+        <action
+            android:id="@+id/action_videosFragment_to_addVideoFragment"
+            app:destination="@id/addVideoFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addVideoFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.videos.AddVideoFragment"
+        android:label="@string/add_video"
+        tools:layout="@layout/fragment_add_video">
+        <argument
+            android:name="model"
+            app:argType="dev.anonymous.hurriya.admin.domain.models.Video"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/whatsAppTweetsFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.whatsapp.WhatsAppTweetsFragment"
+        android:label="@string/whatsapp_tweets"
+        tools:layout="@layout/fragment_whatsapp_tweets">
+        <action
+            android:id="@+id/action_whatsAppTweetsFragment_to_getTextDialog"
+            app:destination="@id/getTextDialog"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/prisonersCardsFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.prisoners.PrisonersCardsFragment"
+        android:label="@string/prisoner_cards"
+        tools:layout="@layout/fragment_prisoners_cards">
+        <action
+            android:id="@+id/action_prisonersCardsFragment_to_addPrisonerCardFragment"
+            app:destination="@id/addPrisonerCardFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPrisonerCardFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.prisoners.AddPrisonerCardFragment"
+        android:label="@string/add_prisoner_card"
+        tools:layout="@layout/fragment_add_prisoner_card">
+        <argument
+            android:name="model"
+            app:argType="dev.anonymous.hurriya.admin.domain.models.PrisonerCard"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.auth.login.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_loadingDialog"
+            app:destination="@id/loadingDialog"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_loginFragment_to_inviteRegistrationFragment"
+            app:destination="@id/inviteRegistrationFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendNotificationFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.notification.SendNotificationFragment"
+        android:label="@string/send_notification_to_users"
+        tools:layout="@layout/fragment_send_notification" />
+    <fragment
+        android:id="@+id/albumsFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.main.album.AlbumsFragment"
+        android:label="@string/albums"
+        tools:layout="@layout/fragment_albums">
+        <action
+            android:id="@+id/action_albumsFragment_to_albumImagesFragment"
+            app:destination="@id/albumImagesFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_albumsFragment_to_addAlbumFragment"
+            app:destination="@id/addAlbumFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left_dim"
+            app:popEnterAnim="@anim/enter_from_left_restore"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <dialog
+        android:id="@+id/loadingDialog"
+        android:name="dev.anonymous.hurriya.admin.presentation.dialogs.LoadingDialog" />
+    <dialog
+        android:id="@+id/getTextDialog"
+        android:name="dev.anonymous.hurriya.admin.presentation.dialogs.GetTextDialog"
+        android:label="GetTextDialog">
+        <argument
+            android:name="titleRes"
+            app:argType="reference" />
+        <argument
+            android:name="hintRes"
+            app:argType="reference" />
+        <argument
+            android:name="buttonTextRes"
+            app:argType="reference" />
+        <argument
+            android:name="resultKey"
+            app:argType="string" />
+    </dialog>
+    <fragment
+        android:id="@+id/inviteRegistrationFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.auth.invite_registration.InviteRegistrationFragment"
+        android:label="@string/register_with_invite_code"
+        tools:layout="@layout/fragment_invite_registration" >
+        <action
+            android:id="@+id/action_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/staffManagementFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.super_admin.staff_management.StaffManagementFragment"
+        android:label="@string/staff_management" />
+    <fragment
+        android:id="@+id/inviteManagementFragment"
+        android:name="dev.anonymous.hurriya.admin.presentation.screens.super_admin.invite_management.InviteManagementFragment"
+        android:label="InviteManagementFragment" >
+        <action
+            android:id="@+id/action_to_generateInviteBottomSheet"
+            app:destination="@id/generateInviteBottomSheet" />
+    </fragment>
+    <dialog
+        android:id="@+id/generateInviteBottomSheet"
+        android:name="dev.anonymous.hurriya.admin.presentation.dialogs.GenerateInviteBottomSheet"
+        android:label="GenerateInviteBottomSheet" >
+        <argument
+            android:name="resultKey"
+            app:argType="string" />
+    </dialog>
+</navigation>

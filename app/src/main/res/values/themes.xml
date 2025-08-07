@@ -1,0 +1,179 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.HurriyaAdmin" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar" >false</item>
+        <item name="android:statusBarColor">@color/app_color</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="materialCardViewStyle">@style/BaseCardStyle</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="circularProgressIndicatorStyle">@style/BaseCircularProgressStyle</item>
+        <item name="floatingActionButtonStyle">@style/BaseFloatActionButtonStyle</item>
+        <item name="android:fontFamily">@font/cairo_medium</item>
+        <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
+        <item name="fontFamily">@font/cairo_medium</item>
+        <item name="android:textViewStyle">@style/BaseTextViewStyle</item>
+        <!--  disable hint  -->
+        <item name="android:textColorHint">@color/gray</item>
+    </style>
+
+    <style name="Theme.HurriyaAdmin" parent="Base.Theme.HurriyaAdmin" />
+
+    <style name="Theme.HurriyaAdmin.Posters" parent="Base.Theme.HurriyaAdmin">
+        <item name="android:navigationBarColor">@color/app_color</item>
+        <item name="android:windowBackground">@color/app_color</item>
+    </style>
+
+    <style name="Theme.App.MySplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.HurriyaAdmin</item>
+    </style>
+
+    <!--////////////////////////////// TextView //////////////////////////////-->
+
+    <style name="BaseTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ItemTitleOrNameStyle">
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleAlbumNewsVideoStyle" parent="ItemTitleOrNameStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+
+    <style name="TitleOrNameBookPrisonerStyle" parent="ItemTitleOrNameStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TitleForeBaseCardStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--////////////////////////////// CircularProgressIndicator //////////////////////////////-->
+
+    <style name="BaseCircularProgressStyle" parent="Widget.Material3.CircularProgressIndicator">
+        <item name="android:indeterminate">true</item>
+        <item name="indicatorColor">@color/black</item>
+        <item name="trackCornerRadius">@dimen/_5sdp</item>
+        <item name="trackThickness">@dimen/_2sdp</item>
+    </style>
+
+    <!--//////////////////////////////////////// AppBar ////////////////////////////////////////-->
+
+    <style name="CustomAppBarStyle">
+        <item name="android:textSize">@dimen/_17ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:padding">@dimen/_13sdp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/app_color</item>
+    </style>
+
+    <!--//////////////////////////////////////// Card ////////////////////////////////////////-->
+
+    <style name="BaseCardStyle" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardElevation">@dimen/_1sdp</item>
+    </style>
+
+    <style name="CardItemStyle" parent="BaseCardStyle">
+        <item name="cardCornerRadius">@dimen/_8sdp</item>
+        <item name="contentPadding">@dimen/_15sdp</item>
+    </style>
+
+    <!--//////////////////////////////////////// Button ////////////////////////////////////////-->
+
+    <style name="BaseFloatActionButtonStyle" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="tint">@color/app_color</item>
+        <item name="android:layout_marginEnd">@dimen/_12sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_12sdp</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="PrimaryButtonStyle" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="android:paddingTop">@dimen/_8sdp</item>
+        <item name="android:paddingBottom">@dimen/_8sdp</item>
+        <item name="android:paddingStart">@dimen/_68sdp</item>
+        <item name="android:paddingEnd">@dimen/_68sdp</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Button.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_50sdp</item>
+    </style>
+
+    <style name="RoundedButton">
+        <item name="android:minWidth">@dimen/_33sdp</item>
+        <item name="android:minHeight">@dimen/_33sdp</item>
+        <item name="android:background">@drawable/shape_rounded_button</item>
+        <item name="android:stateListAnimator">@animator/button_animator</item>
+    </style>
+
+    <!--//////////////////////////////////////// Dialog ////////////////////////////////////////-->
+
+    <style name="DialogTranslateScaleAnimation">
+        <item name="android:windowEnterAnimation">@anim/translate_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/translate_scale_out</item>
+    </style>
+
+    <style name="DialogAlphaScaleAnimation">
+        <item name="android:windowEnterAnimation">@anim/alpha_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/alpha_scale_out</item>
+    </style>
+
+    <!--////////////////////////////////////// TextField //////////////////////////////////////-->
+
+    <style name="TextInputLayoutNoBoxStrokeStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <!--  the expanded hint  -->
+        <item name="hintTextColor">@color/gray_dark</item>
+        <!--  the Static hint  -->
+        <item name="android:textColorHint">@color/gray</item>
+    </style>
+
+    <!--    secondary    -->
+    <style name="TextInputLayoutBoxCornerRadiusStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:inputType">text</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_15sdp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/_15sdp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_15sdp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/_15sdp</item>
+        <item name="boxStrokeColor">@drawable/selector_secondary_text_input</item>
+        <item name="boxStrokeWidth">@dimen/_2sdp</item>
+        <item name="boxStrokeWidthFocused">@dimen/_3sdp</item>
+    </style>
+
+    <style name="TextInputEditTextStyle">
+        <item name="android:ems">10</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!--    login    -->
+    <style name="TextInputEditTextNoPaddingHorizontalStyle" parent="TextInputEditTextStyle">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">حرية - أدمن</string>
+
+    <string name="prisoner_books">Prisoner Books</string>
+    <string name="prisoner_cards">Prisoner Cards</string>
+    <string name="prisoner_posters">Prisoner Posters</string>
+    <string name="details">Details</string>
+    <string name="prisoner_statistics">Prisoner Statistics</string>
+    <string name="martyrs_of_the_captive_movement">Martyrs of the captive movement</string>
+    <string name="today_s_news">Today\'s news</string>
+    <string name="home">Home</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="add_news">Add news</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="add_prisoner_card">Add prisoner card</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_judgment">Judgment</string>
+    <string name="hint_living">Living</string>
+    <string name="add_new_prisoner">Add new prisoner</string>
+    <string name="hint_date_of_arrest">Date of arrest</string>
+    <string name="add_book">Add book</string>
+    <string name="book_author">Book author</string>
+    <string name="book_name">Book name</string>
+    <string name="app_poster">App poster</string>
+
+    <string name="send_notification_to_users">Send notification to users</string>
+    <string name="send">Send</string>
+
+    <string name="add_admin">Add Admin</string>
+    <string name="add_new_admin">Add new Admin</string>
+
+    <string name="add_album">Add album</string>
+    <string name="enter_urgent_news">Enter urgent news</string>
+
+
+    <string name="whatsapp_tweets">WhatsApp tweets</string>
+    <string name="add_new_tweet">Add new tweet</string>
+    <string name="videos">Videos</string>
+    <string name="albums">Albums</string>
+    <string name="statistic_title">Statistic title</string>
+    <string name="update">Update</string>
+    <string name="choose_pdf_file">Choose Pdf File</string>
+
+    <string name="_1_file_chooses">1 File Chooses</string>
+
+    <string name="add">Add</string>
+
+    <string name="update_album">Update Album</string>
+    <string name="upload_album_image">upload album image</string>
+
+    <string name="update_the_prisoner_card">Update the prisoner card</string>
+    <string name="add_prisoner_image">Add prisoner image</string>
+
+    <string name="add_book_image">Add the book image</string>
+
+    <string name="add_news_image">Add the news image</string>
+
+    <string name="urgent_news_updated">Urgent news has been updated</string>
+    <string name="join_url_updated">The join url has been updated</string>
+    <string name="something_went_wrong">Something went wrong :(</string>
+    <string name="add_album_image">Add album image</string>
+    <string name="add_images_from_gallery">Add images from gallery</string>
+    <string name="there_is_nothing_to_save">There is nothing to save</string>
+    <string name="update_url_whatsapp_group">Update the url to join the WhatsApp group</string>
+    <string name="enter_the_new_url">Enter the new url</string>
+    <string name="update_the_book">Update the book</string>
+    <string name="task_completed_successfully">The task was completed successfully</string>
+    <string name="update_the_news">Update the news</string>
+
+    <string name="add_statistic">Add statistic</string>
+    <string name="statistic_number">Statistic number</string>
+    <string name="upload_statistic_image">Upload statistic image</string>
+    <string name="update_the_statistic">Update the statistic</string>
+
+    <string name="add_video">Add video</string>
+    <string name="update_the_video_data">Update the video data</string>
+    <string name="add_a_thumbnail">Add a thumbnail</string>
+    <string name="choose_the_video">Choose the video</string>
+
+    <string name="enter_tweet_text">Enter the tweet text</string>
+    <string name="add_poster_image">Add poster image</string>
+    <string name="please_enter_a_valid_number">Please enter a valid number</string>
+
+    <string name="progress_uploading">Uploading…</string>
+    <string name="upload_success">Upload finished</string>
+    <string name="upload_failure">Upload failed</string>
+    <string name="video_uploading_in_background">The video is uploading in the background</string>
+    <string name="uploaded_successfully">Uploaded successfully</string>
+    <string name="uploading">Uploading</string>
+    <string name="video">videos</string>
+    <string name="add_argent_news">Add argent news</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="full_name">Full name</string>
+    <string name="invite_code">Invite Code</string>
+    <string name="register">Register</string>
+    <string name="register_with_invite_code">Register with Invite Code</string>
+    <string name="staff_management">Staff Management</string>\
+
+</resources>

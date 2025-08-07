@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_color">#FF0000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="red">#CC0303</color>
+
+    <color name="colorSecondary">#4A90E2</color>
+
+    <color name="gray_transparent">#90E8E7EC</color>
+
+    <color name="divider_color">#DBDBDB</color>
+
+    <color name="gray">#8F8F8F</color>
+
+    <color name="gray_dark">#6E6E6E</color>
+
+    <color name="place_holder_color">#AAADC4</color>
+
+    <color name="recycler_whatsApp_background">#F6E8D2</color>
+
+</resources>

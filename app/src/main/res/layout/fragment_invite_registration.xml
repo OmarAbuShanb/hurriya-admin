@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".presentation.screens.auth.invite_registration.InviteRegistrationFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher_foreground" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/loginCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            app:cardCornerRadius="@dimen/primaryCardCornerRadius"
+            app:contentPaddingBottom="@dimen/_10sdp"
+            app:contentPaddingLeft="@dimen/_15sdp"
+            app:contentPaddingRight="@dimen/_15sdp"
+            app:contentPaddingTop="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayoutNoBoxStrokeStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etName"
+                        style="@style/TextInputEditTextNoPaddingHorizontalStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/full_name"
+                        android:inputType="textPersonName"
+                        android:textAlignment="viewStart" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <include layout="@layout/view_divider" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayoutNoBoxStrokeStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        style="@style/TextInputEditTextNoPaddingHorizontalStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:textAlignment="viewStart" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <include layout="@layout/view_divider" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayoutNoBoxStrokeStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        style="@style/TextInputEditTextNoPaddingHorizontalStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:textAlignment="viewStart" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <include layout="@layout/view_divider" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayoutNoBoxStrokeStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etInviteCode"
+                        style="@style/TextInputEditTextNoPaddingHorizontalStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/invite_code"
+                        android:inputType="textNoSuggestions"
+                        android:textAlignment="viewStart" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <dev.anonymous.hurriya.admin.presentation.components.ui.LoadingButtonView
+            android:id="@+id/btnRegisterWithInvite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_30sdp"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/app_color"
+            app:buttonStyle="@style/PrimaryButtonStyle"
+            app:stateListAnimator="@animator/button_animator"
+            app:text="@string/register" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_loading_dialog"
+    tools:context=".presentation.dialogs.LoadingDialog">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_14sdp"
+        android:indeterminate="true"
+        app:indicatorColor="@color/white"
+        app:indicatorSize="@dimen/_33sdp"
+        app:trackColor="@color/black"
+        app:trackCornerRadius="@dimen/_6sdp"
+        app:trackThickness="@dimen/_3sdp" />
+
+</FrameLayout>
