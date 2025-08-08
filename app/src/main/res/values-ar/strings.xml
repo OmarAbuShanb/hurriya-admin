@@ -99,5 +99,17 @@
     <string name="add_argent_news">إضافة خبر عاجل</string>
     <string name="staff_management">إدارة الطاقم</string>
 
+    <string name="change_to_editor">تغيير إلى محرر</string>
+    <string name="change_to_admin">تغيير إلى مشرف</string>
+    <string name="role_owner">مالك</string>
+    <string name="role_admin">مشرف</string>
+    <string name="role_editor">محرر</string>
+    <string name="invitation_code_clipboard_label">كود الدعوة</string>
+    <string name="status_used">مستخدمة</string>
+    <string name="status_expired">منتهية</string>
+    <string name="status_pending">معلقة</string>
+    <string name="error_all_fields_required">جميع الحقول مطلوبة</string>
+    <string name="error_invalid_email">البريد الإلكتروني غير صالح</string>
+    <string name="error_please_fill_all_fields">الرجاء ملء جميع الحقول</string>
 
 </resources>

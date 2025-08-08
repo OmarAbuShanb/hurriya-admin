@@ -58,9 +58,9 @@ class StaffManagementFragment :
 
         val switchRoleItem = popupMenu.menu.findItem(R.id.action_switch_role)
         switchRoleItem?.title = if (staff.role == "admin") {
-            "تغيير إلى محرر"
+            getString(R.string.change_to_editor)
         } else {
-            "تغيير إلى مشرف"
+            getString(R.string.change_to_admin)
         }
 
         popupMenu.setOnMenuItemClickListener { menuItem ->

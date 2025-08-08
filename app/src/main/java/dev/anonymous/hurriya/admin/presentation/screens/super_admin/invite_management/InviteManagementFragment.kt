@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
+import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.databinding.FragmentInviteManagementBinding
 import dev.anonymous.hurriya.admin.domain.models.Invitation
 import dev.anonymous.hurriya.admin.presentation.components.BaseFragment
@@ -78,7 +79,8 @@ class InviteManagementFragment :
     }
 
     override fun onCopyInvitationCode(code: String) {
-        ClipboardUtils.copyToClipboard(requireContext(), "كود الدعوة", code)
+        val label = getString(R.string.invitation_code_clipboard_label)
+        ClipboardUtils.copyToClipboard(requireContext(), label, code)
     }
 
     override fun onDeleteInvitation(invitationId: String) {

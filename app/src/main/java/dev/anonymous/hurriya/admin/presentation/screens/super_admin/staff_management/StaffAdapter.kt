@@ -1,8 +1,10 @@
 package dev.anonymous.hurriya.admin.presentation.screens.super_admin.staff_management
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -34,35 +36,42 @@ class StaffAdapter(
 
     inner class StaffViewHolder(private val binding: ItemStaffMemberBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: StaffItem) {
-            binding.tvName.text = item.name
+        private val context: Context = binding.root.context
 
-            binding.tvRole.text = when (item.role) {
-                "superadmin" -> "مالك"
-                "admin" -> "مشرف"
-                else -> "محرر"
-            }
+        fun bind(item: StaffItem) = with(binding) {
+            tvName.text = item.name
+            tvRole.text = getRoleDisplayName(context,item.role)
+            tvStatus.text = PresenceFormatter.getLastSeenText(item.lastSeen, item.isOnline)
 
-            binding.tvStatus.text = PresenceFormatter.getLastSeenText(
-                item.lastSeen,
-                item.isOnline
-            )
-
-            binding.dotStatus.setBackgroundResource(
-                if (item.isOnline != null && item.isOnline)
+            dotStatus.setBackgroundResource(
+                if (item.isOnline == true) {
                     R.drawable.green_dot
-                else
+                } else {
                     R.drawable.gray_dot
+                }
             )
 
-            binding.btnOptions.visibility = if (isSuperAdmin && item.role != "superadmin") {
-                binding.btnOptions.setOnClickListener { v ->
-                    listener.onOptionsClicked(v, item)
+            btnOptions.apply {
+                visibility = if (isSuperAdmin && item.role != "superadmin") {
+                    View.VISIBLE
+                } else {
+                    View.GONE
                 }
-                View.VISIBLE
-            } else {
-                View.GONE
+
+                if (isVisible) {
+                    setOnClickListener { v ->
+                        listener.onOptionsClicked(v, item)
+                    }
+                } else {
+                    setOnClickListener(null)
+                }
             }
+        }
+
+        private fun getRoleDisplayName(context: Context, role: String) = when (role) {
+            "superadmin" -> context.getString(R.string.role_owner)
+            "admin" -> context.getString(R.string.role_admin)
+            else -> context.getString(R.string.role_editor)
         }
     }
 

@@ -98,6 +98,19 @@
     <string name="invite_code">Invite Code</string>
     <string name="register">Register</string>
     <string name="register_with_invite_code">Register with Invite Code</string>
-    <string name="staff_management">Staff Management</string>\
+    <string name="staff_management">Staff Management</string>
+
+    <string name="change_to_editor">Change to Editor</string>
+    <string name="change_to_admin">Change to Admin</string>
+    <string name="role_owner">Owner</string>
+    <string name="role_admin">Admin</string>
+    <string name="role_editor">Editor</string>
+    <string name="invitation_code_clipboard_label">Invitation Code</string>
+    <string name="status_used">Used</string>
+    <string name="status_expired">Expired</string>
+    <string name="status_pending">Pending</string>
+    <string name="error_all_fields_required">All fields are required</string>
+    <string name="error_invalid_email">Invalid Email</string>
+    <string name="error_please_fill_all_fields">Please fill in all fields</string>
 
 </resources>

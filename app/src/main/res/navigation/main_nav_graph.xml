@@ -290,7 +290,7 @@
             app:popEnterAnim="@anim/enter_from_left_restore"
             app:popExitAnim="@anim/exit_to_right" />
         <action
-            android:id="@+id/action_loginFragment_to_inviteRegistrationFragment"
+            android:id="@+id/action_to_inviteRegistrationFragment"
             app:destination="@id/inviteRegistrationFragment"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left_dim"
