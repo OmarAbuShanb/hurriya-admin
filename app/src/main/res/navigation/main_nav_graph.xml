@@ -366,9 +366,5 @@
     <dialog
         android:id="@+id/generateInviteBottomSheet"
         android:name="dev.anonymous.hurriya.admin.presentation.dialogs.GenerateInviteBottomSheet"
-        android:label="GenerateInviteBottomSheet" >
-        <argument
-            android:name="resultKey"
-            app:argType="string" />
-    </dialog>
+        android:label="GenerateInviteBottomSheet" />
 </navigation>

@@ -5,10 +5,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.core.utils.ResultState
 import dev.anonymous.hurriya.admin.databinding.FragmentLoginBinding
 import dev.anonymous.hurriya.admin.presentation.components.BaseFragment
+import dev.anonymous.hurriya.admin.presentation.validation.ValidationError
 import dev.anonymous.hurriya.admin.presentation.validation.ValidationResult
 import kotlinx.coroutines.launch
 
@@ -20,77 +23,70 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         super.onViewCreated(view, savedInstanceState)
 
         setupListeners()
-        observeValidationState()
         observeLoginState()
     }
 
     private fun setupListeners() {
         binding.btnLogin.setOnButtonClickListener {
-            val email = binding.etEmail.getText().toString().trim()
-            val password = binding.etPassword.getText().toString().trim()
-            viewModel.validate(email, password)
+            onLoginClicked()
         }
 
         binding.tvInviteRegister.setOnClickListener {
-            navigateTo(
-                LoginFragmentDirections.actionToInviteRegistrationFragment()
-            )
+            navigateTo(LoginFragmentDirections.actionToInviteRegistrationFragment())
         }
     }
 
-    private fun observeValidationState() {
-        lifecycleScope.launch {
-            viewModel.validationState.collect { result ->
-                when (result) {
-                    is ValidationResult.Valid -> {
-                        binding.btnLogin.showLoading()
+    private fun onLoginClicked() {
+        val email = binding.etEmail.text.toString().trim()
+        val password = binding.etPassword.text.toString().trim()
 
-                        val loginData = result.data
-                        viewModel.login(loginData.email, loginData.password)
-                    }
-
-                    is ValidationResult.Invalid -> {
-                        Toast.makeText(
-                            requireContext(),
-                            requireContext().getString(result.message),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
-                    ValidationResult.Idle -> {
-                        binding.btnLogin.hideLoading()
-                    }
-                }
-            }
+        when (val result = viewModel.validateCredentials(email, password)) {
+            is ValidationResult.Valid -> viewModel.login(email, password)
+            is ValidationResult.Invalid -> showValidationError(result.error)
         }
+    }
+
+    private fun showValidationError(error: ValidationError) {
+        val messageResId = when (error) {
+            ValidationError.EMPTY_FIELDS -> R.string.error_all_fields_required
+            ValidationError.INVALID_EMAIL -> R.string.error_invalid_email
+        }
+        showError(getString(messageResId))
     }
 
     private fun observeLoginState() {
         lifecycleScope.launch {
             viewModel.loginState.collect { state ->
                 when (state) {
-                    is ResultState.Loading -> {
-                        binding.btnLogin.showLoading()
-                        binding.tvInviteRegister.isEnabled = false
-                    }
-
-                    is ResultState.Success ->
-                        navigateTo(
-                            LoginFragmentDirections.actionLoginFragmentToDashboardFragment()
-                        )
-
-                    is ResultState.Error -> Toast.makeText(
-                        requireContext(),
-                        state.message,
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    ResultState.Idle -> {
-                        binding.btnLogin.hideLoading()
-                        binding.tvInviteRegister.isEnabled = true
-                    }
+                    is ResultState.Loading -> showLoadingState()
+                    is ResultState.Success -> navigateToDashboard()
+                    is ResultState.Error -> showError(state.message)
+                    ResultState.Idle -> showIdleState()
                 }
             }
         }
     }
+
+    private fun showLoadingState() {
+        binding.btnLogin.showLoading()
+        binding.tvInviteRegister.isEnabled = false
+        binding.etEmail.isEnabled = false
+        binding.etPassword.isEnabled = false
+    }
+
+    private fun showIdleState() {
+        binding.btnLogin.hideLoading()
+        binding.tvInviteRegister.isEnabled = true
+        binding.etEmail.isEnabled = true
+        binding.etPassword.isEnabled = true
+    }
+
+    private fun navigateToDashboard() {
+        navigateTo(LoginFragmentDirections.actionLoginFragmentToDashboardFragment())
+    }
+
+    private fun showError(message: String) {
+        Snackbar.make(requireView(), message, Snackbar.LENGTH_LONG).show()
+    }
 }
+

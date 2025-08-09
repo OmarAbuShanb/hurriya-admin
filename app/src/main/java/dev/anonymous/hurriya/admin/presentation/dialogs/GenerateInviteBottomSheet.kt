@@ -22,7 +22,6 @@ import kotlinx.coroutines.launch
 class GenerateInviteBottomSheet() : BottomSheetDialogFragment() {
     private lateinit var binding: BottomSheetGenerateInviteBinding
     private val viewModel: InviteManagementViewModel by activityViewModels()
-    private val args: GenerateInviteBottomSheetArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +45,6 @@ class GenerateInviteBottomSheet() : BottomSheetDialogFragment() {
                         "تم توليد الرمز: ${state.data.code}",
                         Toast.LENGTH_SHORT
                     ).show()
-                    sendResultBack(state.data)
                     dismiss()
                 } else if (state is ResultState.Error) {
                     Toast.makeText(requireContext(), "خطأ: ${state.message}", Toast.LENGTH_SHORT)
@@ -66,11 +64,5 @@ class GenerateInviteBottomSheet() : BottomSheetDialogFragment() {
             }
             viewModel.generateInvite(hint, selectedRole)
         }
-    }
-
-    private fun sendResultBack(newInvitation: Invitation) {
-        findNavController().previousBackStackEntry
-            ?.savedStateHandle
-            ?.set(args.resultKey, newInvitation)
     }
 }

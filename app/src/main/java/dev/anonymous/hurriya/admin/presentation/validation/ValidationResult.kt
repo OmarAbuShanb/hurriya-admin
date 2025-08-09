@@ -1,7 +1,6 @@
 package dev.anonymous.hurriya.admin.presentation.validation
 
-sealed class ValidationResult<out T> {
-    object Idle : ValidationResult<Nothing>()
-    data class Valid<T>(val data: T) : ValidationResult<T>()
-    data class Invalid(val message: Int) : ValidationResult<Nothing>()
+sealed class ValidationResult {
+    object Valid : ValidationResult()
+    data class Invalid(val error: ValidationError) : ValidationResult()
 }

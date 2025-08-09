@@ -5,12 +5,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
 import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.databinding.FragmentInviteManagementBinding
-import dev.anonymous.hurriya.admin.domain.models.Invitation
 import dev.anonymous.hurriya.admin.presentation.components.BaseFragment
 import dev.anonymous.hurriya.admin.presentation.utils.ClipboardUtils
 import kotlinx.coroutines.flow.collectLatest
@@ -23,21 +21,16 @@ class InviteManagementFragment :
     private val viewModel: InviteManagementViewModel by activityViewModels()
     private val invitationAdapter by lazy { InvitationAdapter(this) }
 
-    private val generateInviteResultKey = "generate_invite_result"
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.floatAddInvite.setOnClickListener {
             navigateTo(
-                InviteManagementFragmentDirections.actionToGenerateInviteBottomSheet(
-                    generateInviteResultKey
-                )
+                InviteManagementFragmentDirections.actionToGenerateInviteBottomSheet()
             )
         }
         setupRecyclerView()
         collectInvites()
-        observeGenerateInviteSheetResults()
     }
 
     private fun setupRecyclerView() {
@@ -67,15 +60,6 @@ class InviteManagementFragment :
                 }
             }
         }
-    }
-
-    private fun observeGenerateInviteSheetResults() {
-        val savedStateHandle = findNavController().currentBackStackEntry?.savedStateHandle ?: return
-
-        savedStateHandle.getLiveData<Invitation>(generateInviteResultKey)
-            .observe(viewLifecycleOwner) { newInvitation ->
-                savedStateHandle.remove<String>(generateInviteResultKey)
-            }
     }
 
     override fun onCopyInvitationCode(code: String) {
