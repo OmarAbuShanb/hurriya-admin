@@ -11,6 +11,7 @@ import dev.anonymous.hurriya.admin.domain.usecase.staff.FetchStaffListUseCase
 import dev.anonymous.hurriya.admin.domain.usecase.staff.ListenToPresenceUpdatesUseCase
 import dev.anonymous.hurriya.admin.domain.usecase.staff.UpdateStaffRoleUseCase
 import dev.anonymous.hurriya.admin.domain.models.StaffItem
+import dev.anonymous.hurriya.admin.presentation.components.StaffRole
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -92,15 +93,15 @@ class StaffManagementViewModel @Inject constructor(
         _staffList.value = updatedList
     }
 
-    fun updateRole(uid: String, newRole: String) {
+    fun updateRole(uid: String, newStaffRole: StaffRole) {
         updateRoleJob?.cancel()
         _updateRoleState.value = ResultState.Loading
 
         updateRoleJob = viewModelScope.launch {
-            updateStaffRoleUseCase(uid, newRole).onSuccess {
+            updateStaffRoleUseCase(uid, newStaffRole.value).onSuccess {
                 _updateRoleState.value = ResultState.Success(Unit)
                 _updateRoleState.value = ResultState.Idle
-                updateRoleLocally(uid,newRole)
+                updateRoleLocally(uid,newStaffRole.value)
             }.onFailure {
                 _updateRoleState.value = ResultState.Error(ExceptionHandler.handle(it))
             }

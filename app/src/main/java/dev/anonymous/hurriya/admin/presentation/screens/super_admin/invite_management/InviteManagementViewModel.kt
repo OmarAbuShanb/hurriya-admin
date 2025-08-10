@@ -10,6 +10,7 @@ import dev.anonymous.hurriya.admin.domain.models.Invitation
 import dev.anonymous.hurriya.admin.domain.usecase.invitation.DeleteInvitationUseCase
 import dev.anonymous.hurriya.admin.domain.usecase.invitation.GenerateInvitationUseCase
 import dev.anonymous.hurriya.admin.domain.usecase.invitation.GetInvitationsUseCase
+import dev.anonymous.hurriya.admin.presentation.components.StaffRole
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -46,12 +47,12 @@ class InviteManagementViewModel @Inject constructor(
         }
     }
 
-    fun generateInvite(hint: String, role: String) {
+    fun generateInvite(hint: String, staffRole: StaffRole) {
         generateInviteJob?.cancel()
         _generateInviteState.value = ResultState.Loading
 
         generateInviteJob = viewModelScope.launch {
-            generateInvitationUseCase(hint, role).onSuccess { newInvitation ->
+            generateInvitationUseCase(hint, staffRole.value).onSuccess { newInvitation ->
                 _generateInviteState.value = ResultState.Success(newInvitation)
                 _generateInviteState.value = ResultState.Idle
             }.onFailure {

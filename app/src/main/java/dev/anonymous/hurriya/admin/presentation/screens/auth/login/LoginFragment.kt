@@ -11,6 +11,7 @@ import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.core.utils.ResultState
 import dev.anonymous.hurriya.admin.databinding.FragmentLoginBinding
 import dev.anonymous.hurriya.admin.presentation.components.BaseFragment
+import dev.anonymous.hurriya.admin.presentation.utils.KeyboardUtils
 import dev.anonymous.hurriya.admin.presentation.validation.ValidationError
 import dev.anonymous.hurriya.admin.presentation.validation.ValidationResult
 import kotlinx.coroutines.launch
@@ -41,7 +42,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         val password = binding.etPassword.text.toString().trim()
 
         when (val result = viewModel.validateCredentials(email, password)) {
-            is ValidationResult.Valid -> viewModel.login(email, password)
+            is ValidationResult.Valid -> {
+                KeyboardUtils.hideKeyboard(requireActivity())
+                viewModel.login(email, password)
+            }
             is ValidationResult.Invalid -> showValidationError(result.error)
         }
     }

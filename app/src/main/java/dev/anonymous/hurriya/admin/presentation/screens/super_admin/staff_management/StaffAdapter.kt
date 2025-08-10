@@ -4,13 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.databinding.ItemStaffMemberBinding
 import dev.anonymous.hurriya.admin.domain.models.StaffItem
+import dev.anonymous.hurriya.admin.presentation.components.StaffRole
 import dev.anonymous.hurriya.admin.presentation.utils.PresenceFormatter
 
 class StaffAdapter(
@@ -40,7 +40,7 @@ class StaffAdapter(
 
         fun bind(item: StaffItem) = with(binding) {
             tvName.text = item.name
-            tvRole.text = getRoleDisplayName(context,item.role)
+            tvRole.text = getRoleDisplayName(context, item.role)
             tvStatus.text = PresenceFormatter.getLastSeenText(item.lastSeen, item.isOnline)
 
             dotStatus.setBackgroundResource(
@@ -51,28 +51,19 @@ class StaffAdapter(
                 }
             )
 
-            btnOptions.apply {
-                visibility = if (isSuperAdmin && item.role != "superadmin") {
-                    View.VISIBLE
-                } else {
-                    View.GONE
-                }
-
-                if (isVisible) {
-                    setOnClickListener { v ->
-                        listener.onOptionsClicked(v, item)
-                    }
-                } else {
-                    setOnClickListener(null)
-                }
-            }
+            val shouldShowOptions = isSuperAdmin && item.role != StaffRole.SUPER_ADMIN.value
+            btnOptions.visibility = if (shouldShowOptions) View.VISIBLE else View.GONE
+            btnOptions.setOnClickListener(
+                if (shouldShowOptions) { v ->
+                    listener.onOptionsClicked(v, item)
+                } else null
+            )
         }
 
-        private fun getRoleDisplayName(context: Context, role: String) = when (role) {
-            "superadmin" -> context.getString(R.string.role_owner)
-            "admin" -> context.getString(R.string.role_admin)
-            else -> context.getString(R.string.role_editor)
-        }
+        private fun getRoleDisplayName(context: Context, role: String) =
+            StaffRole.entries.firstOrNull { it.value == role }?.let {
+                context.getString(it.displayResId)
+            } ?: role
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<StaffItem>() {

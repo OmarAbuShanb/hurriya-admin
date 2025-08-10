@@ -12,6 +12,7 @@ import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.databinding.FragmentStaffManagementBinding
 import dev.anonymous.hurriya.admin.domain.models.StaffItem
 import dev.anonymous.hurriya.admin.presentation.components.BaseFragment
+import dev.anonymous.hurriya.admin.presentation.components.StaffRole
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -57,7 +58,7 @@ class StaffManagementFragment :
         popupMenu.setForceShowIcon(true)
 
         val switchRoleItem = popupMenu.menu.findItem(R.id.action_switch_role)
-        switchRoleItem?.title = if (staff.role == "admin") {
+        switchRoleItem?.title = if (staff.role == StaffRole.ADMIN.value) {
             getString(R.string.change_to_editor)
         } else {
             getString(R.string.change_to_admin)
@@ -66,7 +67,11 @@ class StaffManagementFragment :
         popupMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_switch_role -> {
-                    val newRole = if (staff.role == "admin") "editor" else "admin"
+                    val newRole = if (staff.role == StaffRole.ADMIN.value) {
+                        StaffRole.EDITOR
+                    } else {
+                        StaffRole.ADMIN
+                    }
                     viewModel.updateRole(staff.uid, newRole)
                     true
                 }

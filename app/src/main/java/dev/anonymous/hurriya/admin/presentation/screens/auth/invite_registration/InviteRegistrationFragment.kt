@@ -10,6 +10,7 @@ import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.core.utils.ResultState
 import dev.anonymous.hurriya.admin.databinding.FragmentInviteRegistrationBinding
 import dev.anonymous.hurriya.admin.presentation.components.BaseFragment
+import dev.anonymous.hurriya.admin.presentation.utils.KeyboardUtils
 import dev.anonymous.hurriya.admin.presentation.validation.ValidationError
 import dev.anonymous.hurriya.admin.presentation.validation.ValidationResult
 import kotlinx.coroutines.launch
@@ -40,12 +41,15 @@ class InviteRegistrationFragment :
         val inviteCode = binding.etInviteCode.text.toString().trim()
 
         when (val result = viewModel.validateCredentials(name, email, password, inviteCode)) {
-            is ValidationResult.Valid -> viewModel.registerWithInvite(
-                email,
-                password,
-                name,
-                inviteCode
-            )
+            is ValidationResult.Valid -> {
+                KeyboardUtils.hideKeyboard(requireActivity())
+                viewModel.registerWithInvite(
+                    email,
+                    password,
+                    name,
+                    inviteCode
+                )
+            }
 
             is ValidationResult.Invalid -> showValidationError(result.error)
         }

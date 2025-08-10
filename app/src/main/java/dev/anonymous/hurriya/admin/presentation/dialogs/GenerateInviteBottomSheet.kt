@@ -7,14 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.core.utils.ResultState
 import dev.anonymous.hurriya.admin.databinding.BottomSheetGenerateInviteBinding
-import dev.anonymous.hurriya.admin.domain.models.Invitation
+import dev.anonymous.hurriya.admin.presentation.components.StaffRole
 import dev.anonymous.hurriya.admin.presentation.screens.super_admin.invite_management.InviteManagementViewModel
 import kotlinx.coroutines.launch
 
@@ -58,9 +56,9 @@ class GenerateInviteBottomSheet() : BottomSheetDialogFragment() {
         binding.btnGenerateInvite.setOnClickListener {
             val hint = binding.etHint.text.toString().trim()
             val selectedRole = when (binding.roleRadioGroup.checkedRadioButtonId) {
-                R.id.rbEditor -> "editor"
-                R.id.rbAdmin -> "admin"
-                else -> "editor"
+                R.id.rbEditor -> StaffRole.EDITOR
+                R.id.rbAdmin -> StaffRole.ADMIN
+                else -> StaffRole.EDITOR
             }
             viewModel.generateInvite(hint, selectedRole)
         }

@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dev.anonymous.hurriya.admin.presentation.components.StaffRole
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
@@ -22,15 +23,19 @@ class UserPreferences @Inject constructor(
         private val STAFF_ROLE = stringPreferencesKey("staff_role")
     }
 
-    val staffRole: Flow<String?> = context.dataStore.data
-        .map { preferences -> preferences[STAFF_ROLE] }
+    val staffRole: Flow<StaffRole?> = context.dataStore.data
+        .map { preferences ->
+            preferences[STAFF_ROLE]?.let { value ->
+                StaffRole.entries.firstOrNull { it.value == value }
+            }
+        }
 
-    suspend fun hasStaffRole(): Boolean {
-        return staffRole.firstOrNull() in listOf("admin", "editor", "superadmin")
+    suspend fun isStaffRoleSet(): Boolean {
+        return staffRole.firstOrNull() != null
     }
 
     fun isSuperAdmin() = staffRole.map {
-        it.equals("superadmin")
+        it?.equals(StaffRole.SUPER_ADMIN) ?: false
     }
 
     suspend fun setStaffRole(role: String) {

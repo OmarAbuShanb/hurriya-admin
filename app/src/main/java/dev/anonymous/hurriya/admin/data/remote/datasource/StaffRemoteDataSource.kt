@@ -91,11 +91,15 @@ class StaffRemoteDataSource @Inject constructor(
         }
     }
 
-    suspend fun updateRole(uid: String, newRole: String): Result<Unit> {
+    suspend fun updateRole(targetUid: String, newRole: String): Result<Unit> {
         return try {
-            firestore.collection(FirestoreCollections.STAFF)
-                .document(uid)
-                .update(StaffFirestoreFields.ROLE, newRole)
+            val data = mapOf(
+                StaffFunctionFields.Request.UID to targetUid,
+                StaffFunctionFields.Request.ROLE to newRole
+            )
+            functions
+                .getHttpsCallable(CloudFunctionNames.UPDATE_STAFF_ROLE)
+                .call(data)
                 .await()
             Result.success(Unit)
         } catch (e: Exception) {

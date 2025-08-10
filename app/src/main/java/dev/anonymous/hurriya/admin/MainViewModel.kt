@@ -33,7 +33,7 @@ class MainViewModel @Inject constructor(
 
     suspend fun isUserLoggedIn(): Boolean {
         val hasUser = firebaseAuth.currentUser != null
-        val hasStaffRole = userPreferences.hasStaffRole()
+        val hasStaffRole = userPreferences.isStaffRoleSet()
         return hasUser && hasStaffRole
     }
 } 
