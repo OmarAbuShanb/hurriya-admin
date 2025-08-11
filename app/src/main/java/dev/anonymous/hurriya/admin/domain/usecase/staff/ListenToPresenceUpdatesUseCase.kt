@@ -1,5 +1,6 @@
 package dev.anonymous.hurriya.admin.domain.usecase.staff
 
+import dev.anonymous.hurriya.admin.domain.models.Staff
 import dev.anonymous.hurriya.admin.domain.repository.StaffRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -7,7 +8,7 @@ import javax.inject.Inject
 class ListenToPresenceUpdatesUseCase @Inject constructor(
     private val repository: StaffRepository
 ) {
-    operator fun invoke(): Flow<Map<String, Pair<Boolean?, Long?>>> {
-        return repository.listenToPresenceUpdates()
+    operator fun invoke(): Flow<List<Staff>> {
+        return repository.listenStaffListSorted()
     }
 }

@@ -6,23 +6,23 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.anonymous.hurriya.admin.core.handlers.ExceptionHandler
 import dev.anonymous.hurriya.admin.core.utils.ResultState
 import dev.anonymous.hurriya.admin.data.local.datastore.UserPreferences
+import dev.anonymous.hurriya.admin.domain.models.Staff
 import dev.anonymous.hurriya.admin.domain.usecase.staff.DeleteStaffUseCase
-import dev.anonymous.hurriya.admin.domain.usecase.staff.FetchStaffListUseCase
 import dev.anonymous.hurriya.admin.domain.usecase.staff.ListenToPresenceUpdatesUseCase
 import dev.anonymous.hurriya.admin.domain.usecase.staff.UpdateStaffRoleUseCase
-import dev.anonymous.hurriya.admin.domain.models.StaffItem
 import dev.anonymous.hurriya.admin.presentation.components.StaffRole
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class StaffManagementViewModel @Inject constructor(
-    private val fetchStaffListUseCase: FetchStaffListUseCase,
     private val listenToPresenceUpdatesUseCase: ListenToPresenceUpdatesUseCase,
     private val updateStaffRoleUseCase: UpdateStaffRoleUseCase,
     private val deleteStaffUseCase: DeleteStaffUseCase,
@@ -32,8 +32,8 @@ class StaffManagementViewModel @Inject constructor(
     private val _isSuperAdmin = MutableStateFlow(false)
     val isSuperAdmin: StateFlow<Boolean> = _isSuperAdmin
 
-    private val _staffList = MutableStateFlow<List<StaffItem>>(emptyList())
-    val staffList: StateFlow<List<StaffItem>> = _staffList
+    private val _staffList = MutableStateFlow<List<Staff>>(emptyList())
+    val staffList: StateFlow<List<Staff>> = _staffList
 
     private val _presenceUpdates = MutableStateFlow<Map<String, Pair<Boolean?, Long?>>>(emptyMap())
 
@@ -43,14 +43,13 @@ class StaffManagementViewModel @Inject constructor(
     private val _deleteStaffState = MutableStateFlow<ResultState<Unit>>(ResultState.Idle)
     val deleteStaffState: StateFlow<ResultState<Unit>> = _deleteStaffState
 
-    private var fetchJob: Job? = null
     private var presenceJob: Job? = null
     private var updateRoleJob: Job? = null
     private var deleteStaffJob: Job? = null
 
     init {
         checkSuperAdmin()
-        fetchStaffList()
+        listenStaffListSorted()
     }
 
     private fun checkSuperAdmin() {
@@ -60,37 +59,19 @@ class StaffManagementViewModel @Inject constructor(
         }
     }
 
-    private fun fetchStaffList() {
-        fetchJob?.cancel()
-        fetchJob = viewModelScope.launch {
-            fetchStaffListUseCase().onSuccess { list ->
-                _staffList.value = list
-                listenToPresenceUpdates()
-            }.onFailure {
-
-            }
-        }
-    }
-
-    private fun listenToPresenceUpdates() {
+    private fun listenStaffListSorted() {
         presenceJob?.cancel()
         presenceJob = viewModelScope.launch {
-            listenToPresenceUpdatesUseCase().collectLatest { presenceMap ->
-                _presenceUpdates.value = presenceMap
-                updateStaffPresence(presenceMap)
+            listenToPresenceUpdatesUseCase()
+                .onStart {
+
+                }.catch {
+
+                }
+                .collectLatest { staffList ->
+                _staffList.value = staffList
             }
         }
-    }
-
-    private fun updateStaffPresence(presenceMap: Map<String, Pair<Boolean?, Long?>>) {
-        val updatedList = _staffList.value.map { staff ->
-            val presence = presenceMap[staff.uid]
-            staff.copy(
-                isOnline = presence?.first,
-                lastSeen = presence?.second
-            )
-        }
-        _staffList.value = updatedList
     }
 
     fun updateRole(uid: String, newStaffRole: StaffRole) {
@@ -101,7 +82,7 @@ class StaffManagementViewModel @Inject constructor(
             updateStaffRoleUseCase(uid, newStaffRole.value).onSuccess {
                 _updateRoleState.value = ResultState.Success(Unit)
                 _updateRoleState.value = ResultState.Idle
-                updateRoleLocally(uid,newStaffRole.value)
+                updateRoleLocally(uid, newStaffRole.value)
             }.onFailure {
                 _updateRoleState.value = ResultState.Error(ExceptionHandler.handle(it))
             }

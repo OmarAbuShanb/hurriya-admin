@@ -10,7 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.databinding.FragmentStaffManagementBinding
-import dev.anonymous.hurriya.admin.domain.models.StaffItem
+import dev.anonymous.hurriya.admin.domain.models.Staff
 import dev.anonymous.hurriya.admin.presentation.components.BaseFragment
 import dev.anonymous.hurriya.admin.presentation.components.StaffRole
 import kotlinx.coroutines.flow.collectLatest
@@ -32,7 +32,7 @@ class StaffManagementFragment :
     }
 
     fun ovs() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.isSuperAdmin.collectLatest { isSuper ->
                     staffAdapter = StaffAdapter(this@StaffManagementFragment, isSuper)
@@ -46,11 +46,11 @@ class StaffManagementFragment :
         }
     }
 
-    override fun onOptionsClicked(view: View, staff: StaffItem) {
+    override fun onOptionsClicked(view: View, staff: Staff) {
         showPopupMenu(view, staff)
     }
 
-    private fun showPopupMenu(anchor: View, staff: StaffItem) {
+    private fun showPopupMenu(anchor: View, staff: Staff) {
         currentPopupMenu?.dismiss()
         val popupMenu = PopupMenu(requireContext(), anchor)
         currentPopupMenu = popupMenu

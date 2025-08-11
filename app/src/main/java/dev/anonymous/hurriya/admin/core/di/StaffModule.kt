@@ -11,7 +11,6 @@ import dev.anonymous.hurriya.admin.data.remote.datasource.StaffRemoteDataSource
 import dev.anonymous.hurriya.admin.data.repository.StaffRepositoryImpl
 import dev.anonymous.hurriya.admin.domain.repository.StaffRepository
 import dev.anonymous.hurriya.admin.domain.usecase.staff.DeleteStaffUseCase
-import dev.anonymous.hurriya.admin.domain.usecase.staff.FetchStaffListUseCase
 import dev.anonymous.hurriya.admin.domain.usecase.staff.ListenToPresenceUpdatesUseCase
 import dev.anonymous.hurriya.admin.domain.usecase.staff.UpdateStaffRoleUseCase
 import javax.inject.Singleton
@@ -37,12 +36,6 @@ object StaffModule {
     fun provideStaffRepository(
         remoteDataSource: StaffRemoteDataSource
     ): StaffRepository = StaffRepositoryImpl(remoteDataSource)
-
-    @Provides
-    @Singleton
-    fun provideFetchStaffListUseCase(
-        repository: StaffRepository
-    ): FetchStaffListUseCase = FetchStaffListUseCase(repository)
 
     @Provides
     @Singleton

@@ -1,8 +1,7 @@
 package dev.anonymous.hurriya.admin.presentation.utils
 
 object PresenceFormatter {
-    fun getLastSeenText(lastSeen: Long?, isOnline: Boolean?): String {
-        if (lastSeen == null || isOnline == null) return "آخر ظهور كان قريباً"
+    fun getLastSeenText(lastSeen: Long, isOnline: Boolean): String {
         if (isOnline) return "متصل الآن"
 
         val now = System.currentTimeMillis()

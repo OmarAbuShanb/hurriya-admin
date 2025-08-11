@@ -16,7 +16,7 @@ class StaffPresenceRemoteDataSource @Inject constructor(
     private fun getUid(): String? = firebaseAuth.currentUser?.uid
 
     private fun getPresenceRef(uid: String) =
-        firebaseDatabase.getReference(RealtimeDbPaths.STAFF_PRESENCE + uid)
+        firebaseDatabase.getReference(RealtimeDbPaths.STAFF).child(uid)
 
     private fun presenceData(isOnline: Boolean) = mapOf(
         StaffPresenceFields.IS_ONLINE to isOnline,
@@ -25,16 +25,16 @@ class StaffPresenceRemoteDataSource @Inject constructor(
 
     override fun setOnline() {
         val uid = getUid() ?: return
-        getPresenceRef(uid).setValue(presenceData(true))
+        getPresenceRef(uid).updateChildren(presenceData(true))
     }
 
     override fun setOffline() {
         val uid = getUid() ?: return
-        getPresenceRef(uid).setValue(presenceData(false))
+        getPresenceRef(uid).updateChildren(presenceData(false))
     }
 
     override fun setupOnDisconnect() {
         val uid = getUid() ?: return
-        getPresenceRef(uid).onDisconnect().setValue(presenceData(false))
+        getPresenceRef(uid).onDisconnect().updateChildren(presenceData(false))
     }
 }

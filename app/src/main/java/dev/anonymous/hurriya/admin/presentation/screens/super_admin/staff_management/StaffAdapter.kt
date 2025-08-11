@@ -9,17 +9,17 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.databinding.ItemStaffMemberBinding
-import dev.anonymous.hurriya.admin.domain.models.StaffItem
+import dev.anonymous.hurriya.admin.domain.models.Staff
 import dev.anonymous.hurriya.admin.presentation.components.StaffRole
 import dev.anonymous.hurriya.admin.presentation.utils.PresenceFormatter
 
 class StaffAdapter(
     private val listener: OnStaffActionListener,
     private val isSuperAdmin: Boolean,
-) : ListAdapter<StaffItem, StaffAdapter.StaffViewHolder>(DiffCallback) {
+) : ListAdapter<Staff, StaffAdapter.StaffViewHolder>(DiffCallback) {
 
     interface OnStaffActionListener {
-        fun onOptionsClicked(view: View, staff: StaffItem)
+        fun onOptionsClicked(view: View, staff: Staff)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StaffViewHolder {
@@ -38,13 +38,13 @@ class StaffAdapter(
         RecyclerView.ViewHolder(binding.root) {
         private val context: Context = binding.root.context
 
-        fun bind(item: StaffItem) = with(binding) {
+        fun bind(item: Staff) = with(binding) {
             tvName.text = item.name
             tvRole.text = getRoleDisplayName(context, item.role)
             tvStatus.text = PresenceFormatter.getLastSeenText(item.lastSeen, item.isOnline)
 
             dotStatus.setBackgroundResource(
-                if (item.isOnline == true) {
+                if (item.isOnline) {
                     R.drawable.green_dot
                 } else {
                     R.drawable.gray_dot
@@ -66,10 +66,12 @@ class StaffAdapter(
             } ?: role
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<StaffItem>() {
-        override fun areItemsTheSame(oldItem: StaffItem, newItem: StaffItem) =
-            oldItem.uid == newItem.uid
-
-        override fun areContentsTheSame(oldItem: StaffItem, newItem: StaffItem) = oldItem == newItem
+    companion object DiffCallback : DiffUtil.ItemCallback<Staff>() {
+        override fun areItemsTheSame(oldItem: Staff, newItem: Staff) = oldItem.uid == newItem.uid
+        override fun areContentsTheSame(oldItem: Staff, newItem: Staff) =
+            oldItem.name == newItem.name &&
+                    oldItem.role == newItem.role &&
+                    oldItem.isOnline == newItem.isOnline &&
+                    oldItem.lastSeen == newItem.lastSeen
     }
 }
