@@ -15,8 +15,9 @@ import dev.anonymous.hurriya.admin.presentation.utils.PresenceFormatter
 
 class StaffAdapter(
     private val listener: OnStaffActionListener,
-    private val isSuperAdmin: Boolean,
 ) : ListAdapter<Staff, StaffAdapter.StaffViewHolder>(DiffCallback) {
+
+    var isSuperAdmin = false
 
     interface OnStaffActionListener {
         fun onOptionsClicked(view: View, staff: Staff)
@@ -31,7 +32,6 @@ class StaffAdapter(
 
     override fun onBindViewHolder(holder: StaffViewHolder, position: Int) {
         holder.bind(getItem(position))
-
     }
 
     inner class StaffViewHolder(private val binding: ItemStaffMemberBinding) :

@@ -46,7 +46,9 @@ object ExceptionHandler {
             is FirebaseTooManyRequestsException -> "تم إجراء عدد كبير من المحاولات. حاول لاحقًا"
             is FirebaseAuthRecentLoginRequiredException -> "يجب إعادة تسجيل الدخول لتنفيذ هذا الإجراء"
             is FirebaseFirestoreException -> "حدث خطأ في قاعدة البيانات. الرجاء المحاولة لاحقًا"
-            is FirebaseException -> "حدث خطأ في Firebase: ${e.message ?: "تفاصيل غير متوفرة"}"
+            is FirebaseException -> e.message?.let { "تعذر الوصول للخادم: $it" }
+                ?: "حدث خطأ غير متوقع"
+
             is ApiException -> "فشل تسجيل الدخول عبر Google: ${e.statusCode}"
             else -> e.message ?: "حدث خطأ غير متوقع"
         }

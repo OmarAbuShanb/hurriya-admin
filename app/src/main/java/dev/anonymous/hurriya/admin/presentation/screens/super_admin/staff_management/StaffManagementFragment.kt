@@ -3,10 +3,12 @@ package dev.anonymous.hurriya.admin.presentation.screens.super_admin.staff_manag
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dev.anonymous.hurriya.admin.R
 import dev.anonymous.hurriya.admin.databinding.FragmentStaffManagementBinding
@@ -20,26 +22,44 @@ import kotlinx.coroutines.launch
 class StaffManagementFragment :
     BaseFragment<FragmentStaffManagementBinding>(FragmentStaffManagementBinding::inflate),
     StaffAdapter.OnStaffActionListener {
+
     private val viewModel: StaffManagementViewModel by viewModels()
     private lateinit var staffAdapter: StaffAdapter
-
     private var currentPopupMenu: PopupMenu? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ovs()
+        initStaffRecycler()
+        observeUiState()
+        observeEvents()
     }
 
-    fun ovs() {
+    private fun initStaffRecycler() {
+        staffAdapter = StaffAdapter(this)
+        binding.recyclerStaff.adapter = staffAdapter
+    }
+
+    private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.isSuperAdmin.collectLatest { isSuper ->
-                    staffAdapter = StaffAdapter(this@StaffManagementFragment, isSuper)
-                    binding.recyclerStaff.adapter = staffAdapter
+                viewModel.uiState.collectLatest { state ->
+                    staffAdapter.isSuperAdmin = state.isSuperAdmin
+                    binding.progressStaff.isVisible = state.isLoading
 
-                    viewModel.staffList.collectLatest { list ->
-                        staffAdapter.submitList(list)
+                    staffAdapter.submitList(state.staffList)
+                }
+            }
+        }
+    }
+
+    private fun observeEvents() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.events.collectLatest { event ->
+                    when (event) {
+                        is UiEvent.ShowSnackbar ->
+                            Snackbar.make(binding.root, event.message, Snackbar.LENGTH_LONG).show()
                     }
                 }
             }
@@ -75,7 +95,6 @@ class StaffManagementFragment :
                     viewModel.updateRole(staff.uid, newRole)
                     true
                 }
-
 
                 R.id.action_delete -> {
                     viewModel.deleteStaff(staff.uid)
