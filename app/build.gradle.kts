@@ -1,35 +1,21 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    alias(libs.plugins.android.application)
+    id("android-application-common")
     alias(libs.plugins.kotlin.android)
+    id("dev.anonymous.android.application")
 
-    id("com.google.dagger.hilt.android")
-    id("com.google.devtools.ksp")
-    id ("com.google.gms.google-services")
-
-    // Navigation Component Safe Args
-    id("androidx.navigation.safeargs")
-}
-
-kotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_11)
-    }
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
     namespace = "dev.anonymous.hurriya.admin"
-    compileSdk = 36
 
     defaultConfig {
         applicationId = "dev.anonymous.hurriya.admin"
-        minSdk = 23
-        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -41,29 +27,13 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
+    implementation(libs.bundles.android.core)
 
-    testImplementation(libs.junit)
-    testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.turbine)
-
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.bundles.unit.tests)
+    androidTestImplementation(libs.bundles.android.tests)
 
     // sdp ssp
     implementation(libs.sdp.android)
@@ -83,12 +53,7 @@ dependencies {
 
     // Firebase
     implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.firestore)
-    implementation(libs.firebase.storage)
-    implementation(libs.firebase.functions)
-    implementation(libs.firebase.database)
-    implementation(libs.firebase.appcheck.debug)
+    implementation(libs.bundles.firebase)
 
     // View Model && Live Data
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
@@ -99,9 +64,8 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     // Room
-    implementation(libs.androidx.room.runtime)
+    implementation(libs.bundles.room)
     ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.paging)
 
     // Data Store
     implementation(libs.androidx.datastore.preferences)

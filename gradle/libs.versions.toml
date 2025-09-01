@@ -1,20 +1,20 @@
 [versions]
-agp = "8.12.0"
+agp = "8.12.2"
 coreSplashscreen = "1.0.1"
-glide = "4.16.0"
-firebaseBom = "34.0.0"
-kotlin = "2.2.0"
-coreKtx = "1.16.0"
+glide = "5.0.3"
+firebaseBom = "34.2.0"
+kotlin = "2.2.10"
+coreKtx = "1.17.0"
 kotlinxCoroutinesTest = "1.10.2"
-lifecycleKtx = "2.9.2"
+lifecycleKtx = "2.9.3"
 materialdatetimepicker = "4.2.3"
 mockk = "1.14.5"
 navigationKtx = "2.9.3"
 room = "2.7.2"
 datastorePreferences = "1.1.7"
 pagingRuntimeKtx = "3.3.6"
-hiltAndroid = "2.57"
-hiltAndroidCompiler = "2.57"
+hiltAndroid = "2.57.1"
+hiltAndroidCompiler = "2.57.1"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
@@ -27,8 +27,12 @@ sdpAndroid = "1.1.1"
 sspAndroid = "1.1.1"
 gson = "2.13.1"
 turbine = "1.2.1"
+googleServices = "4.4.3"
+ksp = "2.2.10-2.0.2"
 
 [libraries]
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+kotlin-gradle-plugin  = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleKtx" }
@@ -56,7 +60,6 @@ kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-t
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationKtx" }
 materialdatetimepicker = { module = "com.wdullaer:materialdatetimepicker", version.ref = "materialdatetimepicker" }
@@ -70,4 +73,14 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
+navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigationKtx" }
 
+[bundles]
+android-core = ["androidx-core-ktx", "androidx-appcompat", "material", "androidx-constraintlayout", "androidx-activity"]
+firebase = ["firebase-auth", "firebase-firestore", "firebase-database", "firebase-storage", "firebase-functions", "firebase-appcheck_debug"]
+room = ["androidx-room-runtime", "androidx-room-paging"]
+unit-tests = ["junit", "mockk", "kotlinx-coroutines-test", "turbine"]
+android-tests = ["androidx-junit", "androidx-espresso-core"]
