@@ -1,38 +1,45 @@
 [versions]
 agp = "8.12.2"
-coreSplashscreen = "1.0.1"
-glide = "5.0.3"
+kotlin = "2.0.21"
+ksp = "2.0.21-1.0.25"
+
 firebaseBom = "34.2.0"
-kotlin = "2.2.10"
-coreKtx = "1.17.0"
-kotlinxCoroutinesTest = "1.10.2"
-lifecycleKtx = "2.9.3"
-materialdatetimepicker = "4.2.3"
-mockk = "1.14.5"
-navigationKtx = "2.9.3"
 room = "2.7.2"
-datastorePreferences = "1.1.7"
-pagingRuntimeKtx = "3.3.6"
+googleServices = "4.4.3"
+
 hiltAndroid = "2.57.1"
-hiltAndroidCompiler = "2.57.1"
-junit = "4.13.2"
-junitVersion = "1.3.0"
-espressoCore = "3.7.0"
-appcompat = "1.7.1"
-material = "1.12.0"
-activity = "1.10.1"
-constraintlayout = "2.2.1"
+pagingRuntimeKtx = "3.3.6"
+
+coreSplashscreen = "1.0.1"
+lifecycleKtx = "2.9.3"
+navigationKtx = "2.9.3"
+
+glide = "5.0.4"
+datastorePreferences = "1.1.7"
 pdfviewAndroid = "1.1.0"
 sdpAndroid = "1.1.1"
 sspAndroid = "1.1.1"
 gson = "2.13.1"
+shimmer = "0.5.0"
+swiperefreshlayout = "1.1.0"
+circularimageview = "4.3.1"
+
+appcompat = "1.7.1"
+material = "1.12.0"
+activity = "1.10.1"
+constraintlayout = "2.2.1"
+coreKtx = "1.17.0"
+media3 = "1.8.0"
+
+junit = "4.13.2"
+espressoCore = "3.7.0"
+mockk = "1.14.5"
 turbine = "1.2.1"
-googleServices = "4.4.3"
-ksp = "2.2.10-2.0.2"
+
+androidxJunit = "1.3.0"
+kotlinxCoroutinesTest = "1.10.2"
 
 [libraries]
-android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-kotlin-gradle-plugin  = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleKtx" }
@@ -44,16 +51,18 @@ firebase-functions = { module = "com.google.firebase:firebase-functions" }
 firebase-storage = { module = "com.google.firebase:firebase-storage" }
 firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
 firebase-database = { module = "com.google.firebase:firebase-database" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
 androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
@@ -62,25 +71,48 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationKtx" }
-materialdatetimepicker = { module = "com.wdullaer:materialdatetimepicker", version.ref = "materialdatetimepicker" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 pdfview-android = { module = "com.dmitryborodin:pdfview-android", version.ref = "pdfviewAndroid" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3" }
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
+circularimageview = { module = "com.mikhaellopez:circularimageview", version.ref = "circularimageview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+java-library = { id = "java-library" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
 navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigationKtx" }
 
 [bundles]
-android-core = ["androidx-core-ktx", "androidx-appcompat", "material", "androidx-constraintlayout", "androidx-activity"]
+core = ["androidx-core-ktx", "androidx-appcompat", "material", "androidx-constraintlayout", "androidx-activity"]
 firebase = ["firebase-auth", "firebase-firestore", "firebase-database", "firebase-storage", "firebase-functions", "firebase-appcheck_debug"]
 room = ["androidx-room-runtime", "androidx-room-paging"]
+jetpack = [
+    "androidx-lifecycle-viewmodel-ktx",
+    "androidx-lifecycle-livedata-ktx",
+    "androidx-navigation-ui-ktx",
+    "androidx-navigation-fragment-ktx",
+    "androidx-core-splashscreen",
+    "androidx-datastore-preferences",
+    "androidx-paging-runtime-ktx",
+    "androidx-swiperefreshlayout"
+]
+ui-extras = ["sdp-android", "ssp-android", "pdfview-android",
+    "circularimageview",
+    "shimmer"
+]
+media = ["androidx-media3-ui", "androidx-media3-exoplayer"]
+utils = ["gson"]
 unit-tests = ["junit", "mockk", "kotlinx-coroutines-test", "turbine"]
 android-tests = ["androidx-junit", "androidx-espresso-core"]

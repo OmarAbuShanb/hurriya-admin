@@ -19,6 +19,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "HurriyaAdmin"
-include(":app")
- 
+rootProject.name = "Hurriya"
+include(":app-management")
+include(":app-client")
+include(":core:data")
+include(":core:domain")
